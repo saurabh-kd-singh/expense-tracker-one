@@ -5,6 +5,8 @@ const list = document.getElementById('list');
 const form = document.getElementById('form');
 const text = document.getElementById('text');
 const amount = document.getElementById('amount');
+const incomeRadio = document.getElementById('incomeRadio');4
+const expenseRadio = document.getElementById('expenseRadio');
 
 
 // const dummyTransactions = [
@@ -58,7 +60,11 @@ function addTransaction(e) {
     const inputText = text.value;
     const inputAmount = amount.value;
 
-    transactions.push({id:(transactions.length+1), text: inputText, amount: inputAmount});
+    if (incomeRadio.checked) {
+        transactions.push({id:(transactions.length+1), text: inputText, amount: inputAmount});
+    } else {
+        transactions.push({id:(transactions.length+1), text: inputText, amount: -inputAmount});
+    }
 
 
     updateLocalStorage();
